@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 - Basic understanding of TypeScript and Node.js
 
 
-# Useful Websites
+## Useful Websites
 
 - [TypeScript Official Documentation](https://www.typescriptlang.org/docs/)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
