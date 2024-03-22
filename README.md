@@ -14,6 +14,13 @@ This project is a basic implementation of an authentication system using TypeScr
 - User login
 - In-memory storage of registered users
 
+## Built with
+
+- Node, Typescript
+- PostgreSQL
+- Express
+
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
