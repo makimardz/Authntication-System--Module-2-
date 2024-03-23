@@ -17,8 +17,9 @@ This project is a basic implementation of an authentication system using TypeScr
 ## Built with
 
 - Node, Typescript
-- PostgreSQL
+- MongoDB
 - Express
+- Prisma
 
 
 ## Prerequisites
@@ -39,3 +40,5 @@ Before you begin, ensure you have met the following requirements:
 - [JSON Web Tokens (JWT) Introduction](https://jwt.io/introduction/)
 - [bcrypt npm package](https://www.npmjs.com/package/bcrypt)
 - [GitHub](https://github.com)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
