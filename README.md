@@ -6,7 +6,7 @@ A simple authentication system built with TypeScript, demonstrating user registr
 
 This project is a basic implementation of an authentication system using TypeScript. It showcases how to register and authenticate users through a command-line interface. This system is intended for educational purposes and to serve as a foundation for more complex authentication systems.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/LUkq7-_UJ0Q)
 
 ## Features
 
