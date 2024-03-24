@@ -1,8 +1,8 @@
-import { UserController } from "../controllers/userController";
-import { Router } from "express";
-const router = Router();
-const User = new UserController();
+import { Application } from "express";
+import UserRoutes from "./userRoutes";
 
-router.use('/users', User.routes());
-
-export default router;
+export const routes = (app: Application) => {
+    app.use(
+        UserRoutes
+    );
+}

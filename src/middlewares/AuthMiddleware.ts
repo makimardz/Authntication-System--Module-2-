@@ -2,10 +2,17 @@ import { Request, Response, NextFunction } from "express";
 import { Auth } from "../auth/auth";
 import { JsonWebTokenError, TokenExpiredError, JwtPayload } from 'jsonwebtoken';
 import { User } from "../services/User";
+
+// Define a new type by extending the existing Request type
+interface AuthenticatedRequest extends Request {
+    user?: {
+        username: string; // Modify this according to your user object structure
+    };
+}
 const auth = new Auth();
 
 export class AuthMiddleware {
-    protected async verifyUserIsAdmin (req: Request, res: Response, next: NextFunction) {
+    protected async verifyUserIsAdmin (req: AuthenticatedRequest, res: Response, next: NextFunction) {
         try {
             if(req.user) {
                 const { username } = req.user;
@@ -26,7 +33,7 @@ export class AuthMiddleware {
         }   
     }
 
-    protected async verifyIfAlreadyLogged (req: Request, res: Response, next: NextFunction) {
+    protected async verifyIfAlreadyLogged (req: AuthenticatedRequest, res: Response, next: NextFunction) {
         try {
             const { authorization } = req.headers;
 

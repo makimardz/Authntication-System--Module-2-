@@ -1,5 +1,4 @@
 import { User } from "../services/User";
-import { PrismaClientKnownRequestError, PrismaClientValidationError } from "@prisma/client";
 import { AuthMiddleware } from "../middlewares/AuthMiddleware";
 import { Response, Router, Request } from "express";
 const router = Router();
@@ -16,20 +15,15 @@ export class UserController extends AuthMiddleware {
         try {
             const { name, username, password } = req.body;
             const user = new User(name, username, password);
-
+    
             await user.create();
-
+    
             res.status(201).json({ message: "User successfully created" });
         
-        } catch (err) { 
-            if((err as PrismaClientKnownRequestError).code === "P2002") {
-                res.status(409).json({ message: "This user already exists" })
-            } else if ((err as PrismaClientValidationError).message ) {
-                res.json({ message: "Missing field or invalid type field" })
-            } else {
-                res.status(500).json({ message: "Uncknow error" });
-            }
-        }        
+        } catch (error: any) {
+            // Handle the error
+            console.error("An error occurred:", error.message);
+        }
     }
 
     private async login (req: Request, res: Response) {
