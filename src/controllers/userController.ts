@@ -1,5 +1,5 @@
 import { User } from "../services/User";
-import { PrismaClientKnownRequestError, PrismaClientValidationError } from "@prisma/client/runtime";
+import { PrismaClientKnownRequestError, PrismaClientValidationError } from "@prisma/client";
 import { AuthMiddleware } from "../middlewares/AuthMiddleware";
 import { Response, Router, Request } from "express";
 const router = Router();
