@@ -1,45 +1,13 @@
-import * as dotenv from "dotenv";
-import express, { Application } from "express";
+import express from 'express';
 import cors from "cors";
-import session from "express-session";
-import { PrismaSessionStore } from "@quixo3/prisma-session-store";
-import { v4 as uuidv4 } from "uuid";
-import prisma from "./db";
-import router from "./router";
+import router from './routes/index'; 
 
-dotenv.config();
-
-/**
- * Setup application
- */
-const app: Application = express();
+const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "http://localhost:5001",
-    credentials: true,
-  })
-);
+app.use(cors());
+// Mount the router at the base path
+app.use('/', router);
 
-const sessionMiddleware = session({
-  cookie: {
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  },
-  secret: process.env.SESSION_SECRET || uuidv4(),
-  resave: false,
-  saveUninitialized: false,
-  store: new PrismaSessionStore(prisma, {
-    checkPeriod: 2 * 60 * 1000,
-    dbRecordIdIsSessionId: true,
-    dbRecordIdFunction: undefined,
-  }),
-});
-
-app.use(sessionMiddleware);
-app.use("/", router);
-
-const API_PORT = process.env.API_PORT;
-app.listen(API_PORT, () => {
-  console.log("Server listening on :" + API_PORT || 5001);
+app.listen(process.env.PORT || 4444, () => {
+    console.log('listening on port' + 4444);
 });
