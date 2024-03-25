@@ -1,6 +1,18 @@
-GET http://localhost:3000/me
-
-
-
+# User Registration
 POST http://localhost:3000/create
+Content-Type: application/json
 
+{
+  "name": "John Doe",
+  "username": "johndoe",
+  "password": "mysecretpassword"
+}
+
+# User Login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "password": "mysecretpassword"
+}

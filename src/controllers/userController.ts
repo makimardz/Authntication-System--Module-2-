@@ -4,6 +4,12 @@ import { Response, Router, Request } from "express";
 const router = Router();
 
 export class UserController extends AuthMiddleware {
+    constructor() {
+        super(); // Call the constructor of the base class AuthMiddleware
+        // Bind route handlers to the current instance
+        this.createUser = this.createUser.bind(this);
+        this.login = this.login.bind(this);
+    }
     public routes() {
         router.post('/login', this.login);
         router.post('/create', this.verifyIfAlreadyLogged,this.verifyUserIsAdmin,this.createUser);
